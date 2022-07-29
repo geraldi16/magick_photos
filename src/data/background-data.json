@@ -1,0 +1,26 @@
+[{
+    "id": 1,
+    "name": "backgroundA",
+    "type": "image",
+    "url": "../images/backgrounds/background-a.jpg"
+},{
+    "id": 2,
+    "name": "backgroundB",
+    "type": "image",
+    "url": "../images/backgrounds/background-a.jpg"
+},{
+    "id": 3,
+    "name": "backgroundC",
+    "type": "image",
+    "url": "../images/backgrounds/background-a.jpg"
+},{
+    "id": 4,
+    "name": "backgroundD",
+    "type": "color",
+    "color": "red"
+},{
+    "id": 5,
+    "name": "backgroundE",
+    "type": "color",
+    "color": "blue"
+}]
