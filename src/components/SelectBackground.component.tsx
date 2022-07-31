@@ -32,9 +32,10 @@ export const SelectBackground: React.FC<Props> = ({ setSelectedImage }) => {
                     <>
                         <img
                             id={bg.id}
-                            src={bg.image}
+                            src={bg.url}
                             onClick={selectImage}
                             className={`background${selectedImageId === bg.id ? '_selected' : ''}`}
+                            alt="selectimage"
                         />
                     </>
                 );
@@ -45,6 +46,7 @@ export const SelectBackground: React.FC<Props> = ({ setSelectedImage }) => {
                     style={{ width: 600, height: 400, backgroundColor: bg.color }}
                     onClick={selectImage}
                     className={`background${selectedImageId === bg.id ? '_selected' : ''}`}
+                    alt="selectimage"
                 />
             )
         })

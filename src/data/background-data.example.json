@@ -1,0 +1,11 @@
+[{
+    "id": 1,
+    "name": "backgroundA",
+    "type": "image",
+    "url": "<your-image-url"
+},{
+    "id": 2,
+    "name": "backgroundD",
+    "type": "color",
+    "color": "ex: #fff"
+}]

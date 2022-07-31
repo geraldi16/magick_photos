@@ -2,17 +2,17 @@
     "id": 1,
     "name": "backgroundA",
     "type": "image",
-    "url": "../images/backgrounds/background-a.jpg"
+    "url": "https://i.ibb.co/0MHpRyc/background-a.jpg"
 },{
     "id": 2,
     "name": "backgroundB",
     "type": "image",
-    "url": "../images/backgrounds/background-a.jpg"
+    "url": "https://i.ibb.co/PgKvGRL/background-b.jpg"
 },{
     "id": 3,
     "name": "backgroundC",
     "type": "image",
-    "url": "../images/backgrounds/background-a.jpg"
+    "url": "https://i.ibb.co/8XjT77y/background-c.jpg"
 },{
     "id": 4,
     "name": "backgroundD",
