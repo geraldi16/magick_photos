@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import base64js from 'base64-js';
+import { AiOutlineLoading } from 'react-icons/ai';
 
 import { SelectBackground } from '../components/SelectBackground.component.tsx';
 import { changeBackground } from '../services/changeBackground.service.ts';
 import { ResultImage } from '../components/ResultImage.tsx';
 import { InputImage } from '../components/InputImage.tsx';
 import { Title } from '../components/Title.tsx';
+import {
+    InputWrapper,
+    InputWrapperFlex,
+    Wrapper,
+    UploadButton,
+    LoadingScreen,
+    LoadingIcon,
+} from './styles/main.style.ts';
 
 export const MainPage: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -51,15 +60,23 @@ export const MainPage: React.FC = () => {
         setLoading(false);
     }
 
-    if (loading) return (<div>Loading...</div>);
-
     return (
-        <div>
-            <Title>Magick Photo</Title>
-            <InputImage imageURL={fileURL} changeFile={changeFile} />
-            <SelectBackground setSelectedImage={setSelectedImage} />
-            <button disabled={disableUpload} onClick={submitChangeImageBackground}>Upload</button>
+        <Wrapper>
+            {loading && (
+                <>
+                    <LoadingScreen/>
+                    <LoadingIcon><AiOutlineLoading size={50} color="#fff"/></LoadingIcon>
+                </>
+            )}
+            <InputWrapper>
+                <Title>Magick Photo</Title>
+                <InputWrapperFlex>
+                    <InputImage imageURL={fileURL} changeFile={changeFile} />
+                    <SelectBackground setSelectedImage={setSelectedImage} />
+                </InputWrapperFlex>
+                <UploadButton disabled={disableUpload} onClick={submitChangeImageBackground}>Upload</UploadButton>
+            </InputWrapper>
             <ResultImage resultURL={resultURL}/>
-        </div>
+        </Wrapper>
     )
 };

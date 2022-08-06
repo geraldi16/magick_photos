@@ -1,8 +1,9 @@
 import React from 'react';
+import { Image, DownloadButton, Wrapper } from './styles/resultImage.style.ts';
 
 type Props = { resultURL: string | ArrayBuffer | null };
 
-export const ResultImage: React.FC<Props> = ({ resultURL }) => {
+export const ResultImage: React.FC<Props> = ({ resultURL = null }) => {
     const downloadResultImage = () => {
         var link = document.createElement('a');
         link.download = 'your-new-photo.jpg';
@@ -13,9 +14,13 @@ export const ResultImage: React.FC<Props> = ({ resultURL }) => {
         document.body.removeChild(link);
     }
     return (
-        <div>
-            <img style={{ maxWidth: 1200, maxHeight: 960}} src={resultURL as string} alt="" />
-            <button onClick={downloadResultImage}>Download</button>
-        </div>
+        <Wrapper hide={!resultURL}>
+            <h3>Result Image</h3>
+            <Image src={resultURL as string} alt="" />
+            <br/>
+            <DownloadButton onClick={downloadResultImage}>
+                Download
+            </DownloadButton>
+        </Wrapper>
     );
 }

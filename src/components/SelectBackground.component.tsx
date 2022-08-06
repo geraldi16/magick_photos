@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getBackgroundList } from '../services/selectBackground.service.ts';
+import { BackgroundImage, BackgroundDiv, SelectBackgroundWrapper } from './styles/selectBackground.style.ts';
 
 type Props = { setSelectedImage: Function };
 
@@ -30,22 +31,22 @@ export const SelectBackground: React.FC<Props> = ({ setSelectedImage }) => {
             if (bg.type === 'image') {
                 return (
                     <>
-                        <img
+                        <BackgroundImage
                             id={bg.id}
                             src={bg.url}
                             onClick={selectImage}
-                            className={`background${selectedImageId === bg.id ? '_selected' : ''}`}
+                            isSelected={selectedImageId === bg.id ? true : false}
                             alt="selectimage"
                         />
                     </>
                 );
             }
             return (
-                <div
+                <BackgroundDiv
                     id={bg.id}
-                    style={{ width: 600, height: 400, backgroundColor: bg.color }}
+                    style={{backgroundColor: bg.color }}
                     onClick={selectImage}
-                    className={`background${selectedImageId === bg.id ? '_selected' : ''}`}
+                    isSelected={selectedImageId === bg.id ? true : false}
                     alt="selectimage"
                 />
             )
@@ -53,8 +54,9 @@ export const SelectBackground: React.FC<Props> = ({ setSelectedImage }) => {
     }
 
     return (
-        <div>
+        <SelectBackgroundWrapper>
+            <p>Select your background</p>
             {renderImages()}
-        </div>
+        </SelectBackgroundWrapper>
     );
 }

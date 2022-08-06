@@ -11,7 +11,7 @@ export const changeBackground = async (currentPhoto, backgroundData) => {
     }
 
    try {
-        return axios({
+        const result = await axios({
             method: 'post',
             url: 'https://api.remove.bg/v1.0/removebg',
             data: formData,
@@ -21,6 +21,8 @@ export const changeBackground = async (currentPhoto, backgroundData) => {
             },
             encoding: null,
         });
+
+        return result;
    } catch (error) {
         console.log(`error happen:  ${error.message}`);
         return { data: null };
