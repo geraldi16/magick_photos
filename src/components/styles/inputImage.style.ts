@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const InputImageWrapper = styled.div`
-    width: 40vw;
-    height: 600px;
-    border-style: dashed;
-    border-color: #818181;
-    border-radius: 8px;
-`
-
 export const InputImagePreview = styled.img`
     width: 100%;
     height: 100%;
@@ -19,9 +11,13 @@ export const Input = styled.input`
     position: absolute;
 `
 
-export const UploadImageText = styled.div`
+export const UploadImage = styled.div`
     width: 100%;
     height: 100%;
-    padding-top: 28vh;
+`
+
+export const UploadImageText = styled.p`
+    margin: 0;
+    padding-top: 27vh;
     color: #818181;
 `

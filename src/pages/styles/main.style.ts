@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi';
 
 export const Wrapper = styled.div`
     margin: 16px;
@@ -12,9 +13,12 @@ export const InputWrapper = styled.div`
 
 export const InputWrapperFlex = styled.div`
     display: flex;
-    padding: 0 10vw;
-    gap: 5vw;
+    gap: 4vw;
     margin-bottom: 24px;
+    width: 42vw;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    margin-left: 28vw;
 `;
 
 export const UploadButton = styled.button`
@@ -25,13 +29,10 @@ export const UploadButton = styled.button`
     color: white;
     font-size: 16px;
     border: 5px solid white;
-    margin-bottom: 24px;
+    margin: 24px 0;
 
     &:disabled {
-        &:hover {
-            background: #cecece;
-            cursor: default;
-        }
+        visibility: hidden;
     }
     &:hover {
         background: #b1b1b1;
@@ -77,4 +78,26 @@ export const LoadingIcon = styled.div`
               transform: rotate(359deg);
     }
   }
+`
+
+export const LeftArrow = styled(FiChevronsLeft)`
+    border: 3px solid white;
+    border-radius: 6px;
+    &:hover {
+        cursor: pointer;
+    }
+    margin-right: 15vw;
+
+    ${props => props.hidden && 'display: none;'}
+`
+
+export const RightArrow = styled(FiChevronsRight)`
+    border: 3px solid white;
+    border-radius: 6px;
+    &:hover {
+        cursor: pointer;
+    }
+    margin-left: 15vw;
+
+    ${props => props.hidden && 'display: none;'}
 `

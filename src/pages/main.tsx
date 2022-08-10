@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import base64js from 'base64-js';
 import { AiOutlineLoading } from 'react-icons/ai';
+import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi';
 
 import { SelectBackground } from '../components/SelectBackground.component.tsx';
 import { changeBackground } from '../services/changeBackground.service.ts';
@@ -14,6 +15,8 @@ import {
     UploadButton,
     LoadingScreen,
     LoadingIcon,
+    LeftArrow,
+    RightArrow,
 } from './styles/main.style.ts';
 
 export const MainPage: React.FC = () => {
@@ -23,11 +26,13 @@ export const MainPage: React.FC = () => {
     const [fileURL, setFileURL] = useState<string | ArrayBuffer | null>('');
     const [resultURL, setResultURL] = useState<string | ArrayBuffer | null>('');
     const [disableUpload, setDisableUpload] = useState<boolean>(true);
+    const [hideLeft, setHideLeft] = useState<boolean>(true);
+    const [hideRight, setHideRight] = useState<boolean>(true);
 
     const changeFile = (event) => {
         if (event.target.files.length === 0) {
             setFileURL(null);
-            setDisableUpload(true);
+            setHideRight(true);
             return;
         }
         
@@ -36,7 +41,7 @@ export const MainPage: React.FC = () => {
         var reader = new FileReader();
         reader.onload = function (e) {
             setFileURL(e.target?.result || null);
-            setDisableUpload(!(background && true));
+            setHideRight(false);
         };
         reader.readAsDataURL(event.target.files[0]);
     }
@@ -60,6 +65,20 @@ export const MainPage: React.FC = () => {
         setLoading(false);
     }
 
+    const moveLeft = () => {
+        setHideLeft(true);
+        setHideRight(fileURL ? false : true);
+        setDisableUpload(true);
+        document.getElementById('input')?.scrollBy(-44 * window.innerWidth/100, 0);
+    }
+
+    const moveRight = () => {
+        setHideLeft(false);
+        setHideRight(true);
+        setDisableUpload(background ? false : true);
+        document.getElementById('input')?.scrollBy(44 * window.innerWidth/100, 0);
+    }
+
     return (
         <Wrapper>
             {loading && (
@@ -70,10 +89,24 @@ export const MainPage: React.FC = () => {
             )}
             <InputWrapper>
                 <Title>Magick Photo</Title>
-                <InputWrapperFlex>
+                <InputWrapperFlex id="input">
                     <InputImage imageURL={fileURL} changeFile={changeFile} />
                     <SelectBackground setSelectedImage={setSelectedImage} />
                 </InputWrapperFlex>
+                <div>
+                    <LeftArrow
+                        onClick={moveLeft}
+                        hidden={hideLeft}
+                        color="white"
+                        size="40"
+                    />
+                    <RightArrow
+                        onClick={moveRight}
+                        hidden={hideRight}
+                        color="white"
+                        size="40"
+                    />
+                </div>
                 <UploadButton disabled={disableUpload} onClick={submitChangeImageBackground}>Upload</UploadButton>
             </InputWrapper>
             <ResultImage resultURL={resultURL}/>

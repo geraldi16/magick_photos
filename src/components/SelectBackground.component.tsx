@@ -54,9 +54,11 @@ export const SelectBackground: React.FC<Props> = ({ setSelectedImage }) => {
     }
 
     return (
-        <SelectBackgroundWrapper>
-            <p>Select your background</p>
-            {renderImages()}
-        </SelectBackgroundWrapper>
+        <div>
+            <p>2. Select your Background</p>
+            <SelectBackgroundWrapper style={{ overflowY: 'auto' }}>
+                {renderImages()}
+            </SelectBackgroundWrapper>
+        </div>
     );
 }
