@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import base64js from 'base64-js';
 import { AiOutlineLoading } from 'react-icons/ai';
-import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi';
 
 import { SelectBackground } from '../components/SelectBackground.component.tsx';
 import { changeBackground } from '../services/changeBackground.service.ts';
